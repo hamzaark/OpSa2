@@ -11,6 +11,19 @@ import fabrik.WriterProduct;
 
 public class FreizeitbaederModel {
 	
+	private FreizeitbaederModel() {
+		
+	}
+	
+	static private FreizeitbaederModel fzModel;
+	
+	static public FreizeitbaederModel getInstance() {
+		if (fzModel == null) {
+			fzModel = new FreizeitbaederModel();
+		}
+		return fzModel;
+	}
+	
 	private Freizeitbad freizeitbad;
 
 	public Freizeitbad getFreizeitbad() {
@@ -19,6 +32,7 @@ public class FreizeitbaederModel {
 
 	public void setFreizeitbad(Freizeitbad freizeitbad) {
 		this.freizeitbad = freizeitbad;
+		
 	}
 	public void schreibeFreizeitbaederInCsvDatei() throws IOException {
 		WriterCreator writerCreator=new ConcreteCsvWriterCreator();

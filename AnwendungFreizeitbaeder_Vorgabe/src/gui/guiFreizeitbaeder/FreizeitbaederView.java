@@ -1,4 +1,4 @@
-package gui;
+package gui.guiFreizeitbaeder;
 
 import business.Freizeitbad;
 import javafx.event.ActionEvent;
@@ -17,13 +17,19 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import ownUtil.MeldungsfensterAnzeiger;
+import ownUtil.Observable;
+import ownUtil.Observer;
 import ownUtil.PlausiException;
+
+import java.util.Vector;
+
 import business.*;
 
-public class FreizeitbaederView {
+public class FreizeitbaederView implements Observable{
 	
 	private FreizeitbaederControl fzControl;
 	private FreizeitbaederModel fzModel;
+	private Vector<Observer> observers = new Vector<Observer>();
 	 //---Anfang Attribute der grafischen Oberflaeche---
     private Pane pane     				= new  Pane();
     private Label lblEingabe    	 	= new Label("Eingabe");
@@ -162,14 +168,15 @@ public class FreizeitbaederView {
    	            txtGeoeffnetBis.getText(),
     		    txtBeckenlaenge.getText(),
     		    txtWassTemperatur.getText()));
-    		zeigeInformationsfensterAn("Das Freizeitbad wurde aufgenommen!");
+    		//zeigeInformationsfensterAn("Das Freizeitbad wurde aufgenommen!");
        	}
        	catch(PlausiException exc){
        		zeigeFehlermeldungsfensterAn(exc.getPlausiTyp() + "er ", exc.getMessage());
      	}
+    	this.zeigeFreizeitbaederAn();
     }
    
-    private void zeigeFreizeitbaederAn(){
+    void zeigeFreizeitbaederAn(){
     	if(this.fzModel.getFreizeitbad()  != null){
     		txtAnzeige.setText(
     				this.fzModel.getFreizeitbad().gibFreizeitbadZurueck(' '));
@@ -188,6 +195,26 @@ public class FreizeitbaederView {
        	new MeldungsfensterAnzeiger(AlertType.ERROR,
         	fehlertyp + "Fehler", meldung).zeigeMeldungsfensterAn();
     }
+
+	@Override
+	public void addObserver(Observer obs) {
+		this.observers.add(obs);
+		
+	}
+
+	@Override
+	public void removeObserver(Observer obs) {
+		this.observers.remove(obs);
+		
+	}
+
+	@Override
+	public void notifyObservers() {
+		for (Observer durchlauf : observers) {
+			durchlauf.update();
+		}
+		
+	}
 
 	
 }
