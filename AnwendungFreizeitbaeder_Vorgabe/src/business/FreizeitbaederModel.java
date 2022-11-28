@@ -4,6 +4,11 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import fabrik.ConcreteCsvWriterCreator;
+import fabrik.ConcreteTxtWriterCreator;
+import fabrik.WriterCreator;
+import fabrik.WriterProduct;
+
 public class FreizeitbaederModel {
 	
 	private Freizeitbad freizeitbad;
@@ -15,11 +20,24 @@ public class FreizeitbaederModel {
 	public void setFreizeitbad(Freizeitbad freizeitbad) {
 		this.freizeitbad = freizeitbad;
 	}
-	public void schreibeFreizeitbaederInCsvDatei() throws IOException{
+	public void schreibeFreizeitbaederInCsvDatei() throws IOException {
+		WriterCreator writerCreator=new ConcreteCsvWriterCreator();
 		
-	BufferedWriter aus = new BufferedWriter(new FileWriter("Freizeitbaeder.csv", true));
-	aus.write(this.getFreizeitbad().gibFreizeitbadZurueck(';'));
-	aus.close();
+		WriterProduct writer=writerCreator.factoryMethod();
+		
+		writer.fuegeInDateiHinzu(this.freizeitbad);
+		writer.schliesseDatei();
+		
+	}
+	public void schreibeFreizeitbaederInTxtDatei() throws IOException{
+		
+		WriterCreator writerCreator=new ConcreteTxtWriterCreator();
+		
+		WriterProduct writer=writerCreator.factoryMethod();
+		
+		writer.fuegeInDateiHinzu(this.freizeitbad);
+		writer.schliesseDatei();
+		
 	}
 
 }

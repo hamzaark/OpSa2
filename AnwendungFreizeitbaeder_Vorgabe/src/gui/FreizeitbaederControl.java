@@ -20,7 +20,11 @@ public class FreizeitbaederControl {
 				fzModel.schreibeFreizeitbaederInCsvDatei();
 				fzView.zeigeInformationsfensterAn("Das Freizeitbad wurde gespeichert!");
 				}
-				else{
+			else if("txt".equals(typ)){
+				fzModel.schreibeFreizeitbaederInTxtDatei();;
+				fzView.zeigeInformationsfensterAn("Die Datei wurde gespeichert");
+			}
+			else{
 				fzView.zeigeInformationsfensterAn(
 				"Noch nicht implementiert!");
 				}
