@@ -13,18 +13,17 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import ownUtil.*;
 
-public class SportstaettenView implements Observable{
+public class SportstaettenView{
 	
 	// Hier ergaenzen
 	Stage stage;
 	FreizeitbaederModel freizeitbaederModel = FreizeitbaederModel.getInstance();
-    Vector<Observer>observers = new Vector<Observer>();
     		
 	//---Anfang Attribute der grafischen Oberflaeche---
     	private Pane pane     				       
  		= new  Pane();
     	private Label lblAnzeigeFreizeitbaeder     
- 		= new Label("Anzeige Freizeitbäder");
+ 		= new Label("Anzeige Freizeitbï¿½der");
     	private TextArea txtAnzeigeFreizeitbaeder  = new TextArea();
     	private Button btnAnzeigeFreizeitbaeder = new Button("Anzeige");
     	//-------Ende Attribute der grafischen Oberflaeche-------
@@ -32,7 +31,7 @@ public class SportstaettenView implements Observable{
     	public SportstaettenView(Stage primaryStage,SportstaettenControl fzControl,FreizeitbaederModel fzModel){
     		Scene scene = new Scene(this.pane, 560, 340);
     		primaryStage.setScene(scene);
-    		primaryStage.setTitle("Anzeige von Sportstätten");
+    		primaryStage.setTitle("Anzeige von Sportstï¿½tten");
     		primaryStage.show();
     		// Hier ergaenzen
 
@@ -88,23 +87,7 @@ public class SportstaettenView implements Observable{
     	  	new MeldungsfensterAnzeiger(AlertType.INFORMATION,
                	"Information", meldung).zeigeMeldungsfensterAn();
     }
-	@Override
-	public void addObserver(Observer obs) {
-		this.observers.add(obs);
-		
-	}
-	@Override
-	public void removeObserver(Observer obs) {
-		this.observers.remove(obs);
-		
-	}
-	@Override
-	public void notifyObservers() {
-		for (Observer durchlauf : observers) {
-			durchlauf.update();
-		}
-		
-	}	
+	
     
 }
 

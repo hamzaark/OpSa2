@@ -12,6 +12,7 @@ public class SportstaettenControl implements Observer {
 	public SportstaettenControl(Stage primaryStage){
 		this.fzModel = FreizeitbaederModel.getInstance();
 		this.sportstaettenView = new SportstaettenView(primaryStage, this, fzModel) ;
+		this.fzModel.addObserver(this);
 	}
 	@Override
 	public void update() {

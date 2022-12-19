@@ -1,0 +1,5 @@
+Daten des Freizeitbades
+Name des Freizeitbads:			hamza
+�ffnungzeit des Freizeitbads:	11.0_12.0
+Beckenl�nge des Freizeitbads:	24
+Wassertemperatur des Freizeitbads:35

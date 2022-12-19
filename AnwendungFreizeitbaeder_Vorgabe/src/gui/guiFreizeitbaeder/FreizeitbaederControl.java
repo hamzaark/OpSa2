@@ -14,6 +14,7 @@ public class FreizeitbaederControl implements Observer{
 	public FreizeitbaederControl(Stage primaryStage){
 		this.fzModel = FreizeitbaederModel.getInstance();
 		this.fzView = new FreizeitbaederView(primaryStage, this,fzModel);
+		this.fzModel.addObserver(this);
 	}
 	public void schreibeInDatei(String typ){
 		try{
@@ -23,15 +24,13 @@ public class FreizeitbaederControl implements Observer{
 				}
 			else if("txt".equals(typ)){
 				fzModel.schreibeFreizeitbaederInTxtDatei();;
-				fzView.zeigeInformationsfensterAn("Die Datei wurde gespeichert");
+				fzView.zeigeInformationsfensterAn("Der Text wurde in die Datei geschrieben.");
 			}
 			else{
 				fzView.zeigeInformationsfensterAn(
 				"Noch nicht implementiert!");
 				}
 			
-			this.fzView.zeigeInformationsfensterAn(
-					"Der Text wurde in die Datei geschrieben.");
 			}
 		catch(IOException exc){
 			this.fzView.zeigeFehlermeldungsfensterAn(typ, "IOException");
