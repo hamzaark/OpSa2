@@ -21,6 +21,8 @@ public class ConcreteTxtWriterProduct extends WriterProduct {
 					+"\n÷ffnungzeit des Freizeitbads:\t"+bad.getGeoeffnetVon()+"_"+bad.getGeoeffnetBis()
 					+"\nBeckenl‰nge des Freizeitbads:\t"+bad.getBeckenlaenge()
 					+"\nWassertemperatur des Freizeitbads:"+bad.getTemperatur());
+			
+			writer.newLine();
 	}
 
 	@Override

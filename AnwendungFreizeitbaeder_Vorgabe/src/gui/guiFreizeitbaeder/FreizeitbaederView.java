@@ -34,9 +34,9 @@ public class FreizeitbaederView{
     private Label lblEingabe    	 	= new Label("Eingabe");
     private Label lblAnzeige   	 	    = new Label("Anzeige");
     private Label lblName 				= new Label("Name:");
-    private Label lblGeoeffnetVon   	= new Label("Geï¿½ffnet von:");
-    private Label lblGeoeffnetBis  	 	= new Label("Geï¿½ffnet bis:");
-    private Label lblBeckenlaenge   	= new Label("Beckenlï¿½nge:");
+    private Label lblGeoeffnetVon   	= new Label("Geöffnet von:");
+    private Label lblGeoeffnetBis  	 	= new Label("Geöffnet bis:");
+    private Label lblBeckenlaenge   	= new Label("Beckenlänge:");
     private Label lblWassTemperatur  	= new Label("Wassertemperatur:");
     private TextField txtName 	 		= new TextField();
     private TextField txtGeoeffnetVon	= new TextField();
@@ -119,7 +119,7 @@ public class FreizeitbaederView{
     	this.fzControl = fzControl;
     	Scene scene = new Scene(this.pane, 560, 340);
     	primaryStage.setScene(scene);
-    	primaryStage.setTitle("Verwaltung von Freizeitbï¿½dern");
+    	primaryStage.setTitle("Verwaltung von Freizeitbädern");
     	primaryStage.show();
     	this.initKomponenten();
 		this.initListener();
@@ -138,18 +138,9 @@ public class FreizeitbaederView{
 	            zeigeFreizeitbaederAn();
 	        } 
    	    });  
-	    mnItmCsvExport.setOnAction(new EventHandler<ActionEvent>() {
-	    	public void handle(ActionEvent e) {
-	    		schreibeFreizeitbaederInDatei("csv");
-	    	}
-}
-	    	);
-	    	mnItmTxtExport.setOnAction(new EventHandler<ActionEvent>() {
-	    	public void handle(ActionEvent e) {
-	    	    schreibeFreizeitbaederInDatei("txt");
-	    	}}
-
-			);
+	    mnItmCsvExport.setOnAction((e) -> schreibeFreizeitbaederInDatei("csv"));
+	    
+	    mnItmTxtExport.setOnAction((e) -> schreibeFreizeitbaederInDatei("txt"));
 
     }
     
@@ -161,7 +152,7 @@ public class FreizeitbaederView{
     
     private void nehmeFreizeitbadAuf(){
     	try{
-    		this.fzModel.setFreizeitbad( new Freizeitbad(
+    		this.fzModel.addFreizeitbad( new Freizeitbad(
     			txtName.getText(), 
    	            txtGeoeffnetVon.getText(),
    	            txtGeoeffnetBis.getText(),
@@ -175,9 +166,13 @@ public class FreizeitbaederView{
     }
    
     void zeigeFreizeitbaederAn(){
-    	if(this.fzModel.getFreizeitbad()  != null){
-    		txtAnzeige.setText(
-    				this.fzModel.getFreizeitbad().gibFreizeitbadZurueck(' '));
+    	if(this.fzModel.getFreizeitbaeder().size() > 0){
+    		StringBuffer text = new StringBuffer();
+    		for (Freizeitbad durchlauf : this.fzModel.getFreizeitbaeder()) {
+    			text.append(durchlauf.gibFreizeitbadZurueck(' ')+"\n");
+    		}
+    		this.txtAnzeige.setText(
+    				text.toString());
     	}
     	else{
     		zeigeInformationsfensterAn("Bisher wurde kein Freizeitbad aufgenommen!");

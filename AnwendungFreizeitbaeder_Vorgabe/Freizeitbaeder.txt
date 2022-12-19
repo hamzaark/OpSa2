@@ -1,5 +1,10 @@
 Daten des Freizeitbades
-Name des Freizeitbads:			hamza
-ï¿½ffnungzeit des Freizeitbads:	11.0_12.0
-Beckenlï¿½nge des Freizeitbads:	24
-Wassertemperatur des Freizeitbads:35
+Name des Freizeitbads:			1
+Öffnungzeit des Freizeitbads:	2.0_3.0
+Beckenlänge des Freizeitbads:	4
+Wassertemperatur des Freizeitbads:5
+Daten des Freizeitbades
+Name des Freizeitbads:			11
+Öffnungzeit des Freizeitbads:	22.0_23.0
+Beckenlänge des Freizeitbads:	4
+Wassertemperatur des Freizeitbads:5
