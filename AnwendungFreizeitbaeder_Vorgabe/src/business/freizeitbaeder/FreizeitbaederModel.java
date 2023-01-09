@@ -1,11 +1,8 @@
-package business;
+package business.freizeitbaeder;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Vector;
-
 import fabrik.ConcreteCsvWriterCreator;
 import fabrik.ConcreteTxtWriterCreator;
 import fabrik.WriterCreator;

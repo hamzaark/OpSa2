@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import business.Freizeitbad;
+import business.freizeitbaeder.Freizeitbad;
 
 public class ConcreteTxtWriterProduct extends WriterProduct {
 		BufferedWriter writer;

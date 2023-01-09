@@ -2,7 +2,7 @@ package gui.guiFreizeitbaeder;
 
 import java.io.IOException;
 
-import business.FreizeitbaederModel;
+import business.freizeitbaeder.FreizeitbaederModel;
 import javafx.stage.Stage;
 import ownUtil.Observer;
 

@@ -1,6 +1,6 @@
 package gui;
    
-import business.Freizeitbad;
+import business.freizeitbaeder.Freizeitbad;
 import javafx.event.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
